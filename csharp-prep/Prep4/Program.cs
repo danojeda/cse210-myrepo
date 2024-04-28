@@ -16,7 +16,7 @@ class Program
             element = int.Parse(Console.ReadLine());
             if (element !=0){
                 numbers.Add(element);
-                //Console.WriteLine($"{element}");
+                
             }
             
 
@@ -25,7 +25,7 @@ class Program
 
         foreach (int number in numbers){
             suma += number;
-            //Console.WriteLine($"{suma} >>> {number}");
+            
         }
         Console.WriteLine($"The sum is: {suma}");
 
