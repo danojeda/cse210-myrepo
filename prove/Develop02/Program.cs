@@ -18,6 +18,7 @@ class Program
             Console.WriteLine("3. Load");
             Console.WriteLine("4. Save");
             Console.WriteLine("5. Quit");
+            //Here I'm showing creativity by giving the user the chance to read a random quote about keeping a journal
             Console.WriteLine("6. Read a random inspiring quote about keeping journals");
             Console.WriteLine("What would you like to do?");
             

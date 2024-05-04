@@ -1,3 +1,6 @@
+/*
+This additional class is called Quote since it reads from the Quote.txt file and randomly selects a quote to show to the user.
+*/
 using System.IO; 
 public class Quote
 {
@@ -6,6 +9,7 @@ public class Quote
     public int myLength = 0;
     public String filename="quotes.txt";
 
+    // This method reads from the quotes.txt file and randomly return a quote
     public String getQuote()
     {
         string [] quotes = System.IO.File.ReadAllLines(filename);
@@ -17,6 +21,7 @@ public class Quote
 
     }
 
+    //This method just shows the quote using the format "The <author> once said: <quote>"
     public void showQuote(string quote)
     {
         String [] lineQuote = quote.Split("%");
