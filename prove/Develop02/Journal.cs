@@ -14,12 +14,12 @@ public class Journal
 
     public void DisplayAll()
     {
-        //Console.WriteLine("*********************//*****//******************************");
+        
         foreach (Entry entryElement in _entries)
         {   
             
             entryElement.Display();
-            //Console.WriteLine("*********************//*****//******************************");
+        
         }
 
         

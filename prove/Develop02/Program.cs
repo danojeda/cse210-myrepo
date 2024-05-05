@@ -27,7 +27,7 @@ class Program
             
              if (option ==1)
         {   
-            //Console.WriteLine("You have selected 1, therefore to write Journal entry.");
+            
             Entry myEntry = new Entry();
             myEntry._date = DateTime.Now.ToString("MM/dd/yyyy");
             PromptGenerator prompt = new PromptGenerator();
