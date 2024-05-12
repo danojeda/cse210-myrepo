@@ -4,7 +4,8 @@ class Program
 {
     static void Main(string[] args)
     {   
-        //int option=0;
+        
+        // I'm showing Creativity by having a set of scriptures in a file called "scripturerCatalog.txt", I randomly obtain some scripture and pass it to my Scripture object 
         Console.Clear();
         Console.WriteLine("Hello Develop03 World!");
         String thisVerse="";
@@ -90,13 +91,13 @@ class Program
 
             numberOfWords = numberOfWords + 3;
         }
-        Console.Clear();
+        
         Console.WriteLine();
         Console.WriteLine();
         Console.WriteLine("Thanks for memorizing with us, see you soon!.");
         Console.WriteLine();
         Console.WriteLine();
-        
+
         
        
             
