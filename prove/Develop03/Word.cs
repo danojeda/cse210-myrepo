@@ -31,8 +31,7 @@ public class Word
 
     public string GetDisplayText()
     {
-        // this will display the text or underline 
-        // getdisplaytext in the Word class deals with which word is hidden
+        
 
         if (_isHidden)
         {

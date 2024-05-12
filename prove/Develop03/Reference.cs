@@ -23,7 +23,7 @@ public class Reference
 
     public String GetDisplayText()
     {   
-        //Console.WriteLine($"{_book} {_chapter}:{_verse}.");
+        
         if (_endVerse == 0)
         {
             String  thisReference = _book + " " + _chapter.ToString() + ":" + _verse.ToString() ;
