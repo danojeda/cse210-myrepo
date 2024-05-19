@@ -8,6 +8,8 @@ class Program
         Console.Clear();
         Console.WriteLine("Welcome to this mindfulness thing.");
         int option=0;
+        // This variable is to count the activities that has been done.
+        int myActivitiesCounter =0;
         
         Activity myTestActivity = new Activity ("Actividad201", "Una buena 02 Actividad", 5);
         Console.WriteLine();
@@ -33,6 +35,11 @@ class Program
 
                 myBreathingActivity.DisplayEndingMessage();
                 myBreathingActivity.ShowSpinner(15);
+
+                // With this following 3 lines I show how many activities has been completed.
+                myActivitiesCounter++;
+                myBreathingActivity.ActivitiesCounter(myActivitiesCounter);
+                Thread.Sleep(5000);
                 Console.Clear();
             }
             else if (option ==2)
@@ -47,6 +54,11 @@ class Program
                 myListingActivity.Run();
                 myListingActivity.DisplayEndingMessage();
                 myListingActivity.ShowSpinner(15);
+
+                // With this following 3 lines I show how many activities has been completed.
+                myActivitiesCounter++;
+                myListingActivity.ActivitiesCounter(myActivitiesCounter);
+                Thread.Sleep(5000);
                 Console.Clear();
                 
 
@@ -70,6 +82,12 @@ class Program
                 myReflectingActivity.Run();
                 myReflectingActivity.DisplayEndingMessage();
                 myReflectingActivity.ShowSpinner(15);
+                
+                // With this following 3 lines I show how many activities has been completed.
+                myActivitiesCounter++;
+                myReflectingActivity.ActivitiesCounter(myActivitiesCounter);
+                Thread.Sleep(5000);
+
                 Console.Clear();
                 
                 

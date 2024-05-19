@@ -77,4 +77,20 @@ public class Activity
     {
         _duration = duration;
     }
+
+
+    // This method is to show how many activities has been performed.
+    public void ActivitiesCounter(int counter)
+    {
+        if (counter ==0)
+        {
+            Console.WriteLine("You have not compelted any activity so far.");
+        }else if (counter == 1){
+
+            Console.WriteLine($"You have completed {counter} activity so far.");
+        }else{
+            Console.WriteLine($"You have completed {counter} activities so far.");
+        }
+        
+    }
 }
