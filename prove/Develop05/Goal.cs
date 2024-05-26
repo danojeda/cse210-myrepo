@@ -1,4 +1,4 @@
-public class Goal
+public abstract  class Goal
 {
     private String _shortName;
     private String _description;
@@ -30,5 +30,20 @@ public class Goal
     public virtual string GetStringRepresentation()
     {
         return "";
+    }
+
+    public string GetName()
+    {
+        return _shortName;
+    }
+
+    public string GetDescription()
+    {
+        return _description;
+    }
+
+    public string GetPoints()
+    {
+        return _points;
     }
 }

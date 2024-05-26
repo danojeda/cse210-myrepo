@@ -1,0 +1,3 @@
+|aaaaa|aaaaaaaaaaaaaaaaaaaaaaa|100
+|bbb|bbbbbbbbbbbbbbbbbbbbb|200
+|ccc|ccccccccccccccccccccccccccccccccccccccc|250

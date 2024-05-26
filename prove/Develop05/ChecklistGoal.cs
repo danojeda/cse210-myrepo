@@ -32,7 +32,7 @@ public class ChecklistGoal : Goal
 
     public override  string GetStringRepresentation()
     {
-        return "";
+        return "|"+GetName()+"|"+GetDescription()+"|"+GetPoints()+"|"+ Convert.ToString(_amountCompleted)+"|"+Convert.ToString(_target)+"|"+Convert.ToString(_bonus);
     }
 
 

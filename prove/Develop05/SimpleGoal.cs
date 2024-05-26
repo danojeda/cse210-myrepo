@@ -22,6 +22,6 @@ public class SimpleGoal:Goal
 
     public override string  GetStringRepresentation()
     {
-        return "";
+        return "|"+ GetName() +"|"+GetDescription() +"|"+GetPoints() ;
     }
 }
