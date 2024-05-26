@@ -22,9 +22,16 @@ public abstract  class Goal
         return true;
     }
 
-    public virtual String GetDetailsString()
-    {
-        return "";
+    public virtual string GetDetailsString()
+    {   
+        
+        if (IsComplete())
+        {
+            return ".[X] " +_shortName +"(" +_description+ ")."; 
+        }else{
+            return ".[ ] " +_shortName +"(" +_description+ ")."; 
+        }
+        
     }
 
     public virtual string GetStringRepresentation()
@@ -42,7 +49,7 @@ public abstract  class Goal
         return _description;
     }
 
-    public string GetPoints()
+    public virtual string GetPoints()
     {
         return _points;
     }

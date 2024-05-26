@@ -12,28 +12,58 @@ public class ChecklistGoal : Goal
     {
         _target = target;
         _bonus = bonus;
+        //_amountCompleted =0;
     }
 
     public override void RecordEvent()
     {
-      //  return _isCompleted;
+      
+      Console.WriteLine($"Congratulations, you have earned {GetPoints()} ");
+      _amountCompleted++;
+      
+      
     }
 
     public override bool IsComplete()
-    {
-        return true;
+    {   
+        if (_amountCompleted == _target)
+        {
+            return true;
+        }else{
+            return false;
+        }
+        
     } 
 
 
     public override string GetDetailsString()
-    {
-        return "";
+    {   
+        
+
+        return  base.GetDetailsString() +  "- Currently completed: " + Convert.ToString(_amountCompleted) + "/" + Convert.ToString(_target);
     }
 
     public override  string GetStringRepresentation()
     {
-        return "|"+GetName()+"|"+GetDescription()+"|"+GetPoints()+"|"+ Convert.ToString(_amountCompleted)+"|"+Convert.ToString(_target)+"|"+Convert.ToString(_bonus);
+        return "ChecklistGoal|"+GetName()+"|"+GetDescription()+"|"+GetPoints()+"|"+ Convert.ToString(_amountCompleted)+"|"+Convert.ToString(_target)+"|"+Convert.ToString(_bonus);
     }
 
+    public void SetAmmountCompleted(int amount)
+    {
+        _amountCompleted = amount;
+    }
 
+   
+   
+
+    public override string GetPoints()
+    {
+        if (_amountCompleted == _target)
+        {
+            return Convert.ToString(int.Parse(base.GetPoints()) + _bonus);
+        }else{
+            return base.GetPoints();
+        }
+        
+    }
 }

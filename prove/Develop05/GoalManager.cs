@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using System.IO; 
 public class GoalManager
 {
@@ -14,21 +15,18 @@ public class GoalManager
 
     public void Start()
     {
-        //Display main menu and display player info
-        //Call:
-        //CreateGoal, ListGoalDetails, SaveGoals, LoadGoals, ReciordEvent, Exit
+        
 
         int option =0;
-        //int goalOption=0;
-        int totalScore =0;
-
+        
 
         do
         {   
             
-            Console.WriteLine($"You have {totalScore} points.");
+            
+            DisplayPlayerinfo();
             Console.WriteLine();
-            Console.WriteLine("Menu Otions:");
+            Console.WriteLine("Menu Options:");
             Console.WriteLine();
             Console.WriteLine("1. Create New Goal.");
             Console.WriteLine("2. List Goals.");
@@ -49,7 +47,8 @@ public class GoalManager
             
             }else if (option == 2)
             {
-                ListGoalNames();
+                
+                ListGoalDetails();
             }else if (option ==3)
             {
                 SaveGoals();
@@ -74,17 +73,19 @@ public class GoalManager
 
     public void DisplayPlayerinfo()
     {
-        // Display the points
+        
+        Console.WriteLine("");
+        Console.WriteLine($"You have {_score} points.");
     }
 
     public void ListGoalNames()
     {
-        // Loop thropugh the list of Goals and display  the names(_shortName)
-        // you may need another function in the Goal class
+        
         int index =1;
+        Console.WriteLine("The goals are:");
         foreach (Goal goal in _goals)
         {
-            Console.WriteLine($" {index} [ ] {goal.GetName()}");
+            Console.WriteLine($" {index} {goal.GetName()}");
             index++;
         }
     }
@@ -92,15 +93,20 @@ public class GoalManager
 
     public void ListGoalDetails()
     {
-        // Loop through the list of Goals and display the full details, usando la base getdetailsstring function
+        
+        int myIndex=1;
+        foreach (Goal goal in _goals)
+        {
+            string thisDetail = goal.GetDetailsString();
+            Console.WriteLine($"{myIndex}{thisDetail}");
+           
+            myIndex++;
+        }
     }
 
     public void CreateGoal()
     {
-        // Display a suib menu to display the goal type 
-        // Then ask for name description and point
-        // ask for more if applies
-        // create the object and add to teh goal list
+        
         int goalOption=0;
         Console.WriteLine("You have chosen option 1");
                 Console.WriteLine();
@@ -122,14 +128,14 @@ public class GoalManager
                     Console.WriteLine("How many points are associated with this goal?");
                     string simpleGoalPoints = Console.ReadLine();
                     SimpleGoal mySimpleGoal = new SimpleGoal (simpleGoalName,simpleGoalDescription,simpleGoalPoints);
-                    //  public SimpleGoal(string name, string description, string points ):base (name,description,points)
+                    
                     _goals.Add(mySimpleGoal);
 
 
                 }else if (goalOption == 2)
                 {
                     Console.WriteLine("You hace chosen 1 >> 2");
-                    // public EternalGoal (string name, string description, string points):base (name,description,points)
+                    
                     Console.WriteLine("What is the name of your goal?");   
                     string eternalGoalName = Console.ReadLine();
                     Console.WriteLine("What is a short description of it?"); 
@@ -143,7 +149,7 @@ public class GoalManager
                 }else if (goalOption ==3)
                 {
                     Console.WriteLine("You hace chosen 1 >> 3");
-                    // public  ChecklistGoal(string name, string description, string points, int target, int bonus):base (name,description,points)
+                    
                     Console.WriteLine("What is the name of your goal?");  
                     string checklistGoalName = Console.ReadLine();
                     Console.WriteLine("What is a short description of it?"); 
@@ -170,27 +176,33 @@ public class GoalManager
 
     public void RecordEvent()
     {
-        // Dsiplay a list of all of the GoalNames
+        
         ListGoalNames();
-        // Becasue we are going to ask the user to select a goal
+        
         Console.WriteLine("Please select a Goal from the list above.");
         int goalSelected = int.Parse(Console.ReadLine());
         goalSelected--;
         Console.WriteLine($"You have selected {_goals[goalSelected].GetName()}");
+        _goals[goalSelected].RecordEvent();
+        _score = _score + int.Parse(_goals[goalSelected].GetPoints());
 
-        // Then we are going to have to call the RecordEvent on the correct goal
-        // then update teh score based on the points
-        // Display current points
+       DisplayPlayerinfo();
+
+        
     }
 
+    public void  AddScore (int bonus)
+    {
+        _score += bonus;
+    }
     public void SaveGoals()
     {
-        // ask user for a filename and loop through the goals and convert each goal to a string and then save the string
-        // With GetStringRepresentation
+       
         Console.WriteLine("What is the name of the file you want to save to?");
         string filename = Console.ReadLine();
         using (StreamWriter outputFile = new StreamWriter (filename))
-        {
+        {   
+            outputFile.WriteLine(_score);
             for (int i=0;i< _goals.Count;i++)
             {
                 outputFile.WriteLine(_goals[i].GetStringRepresentation());
@@ -198,17 +210,7 @@ public class GoalManager
             }
         }
 
-        /*
-        using (StreamWriter outputFile = new StreamWriter(filename))
-{
-    // You can add text to the file with the WriteLine method
-    outputFile.WriteLine("This will be the first line in the file.");
-    
-    // You can use the $ and include variables just like with Console.WriteLine
-    string color = "Blue";
-    outputFile.WriteLine($"My favorite color is {color}");
-}
-        */
+      
 
 
     }
@@ -219,24 +221,34 @@ public class GoalManager
         // use the parts to recreate teh goal parts to recreate the goal object 
          Console.WriteLine("What is the name of the file you want to load from?");
         string filename = Console.ReadLine();
-        string [] lines = System.IO.File.ReadAllLines(filename);
+        string [] lines = System.IO.File.ReadAllLines(filename); 
         foreach (string line in lines)
         {
             string[] parts = line.Split("|");
-            
+            Console.WriteLine();
+         
+            if (parts[0] == "SimpleGoal")
+            {
+                
+                SimpleGoal loadedSimpleGoal = new SimpleGoal(parts[1],parts[2],parts[3]);
+                _goals.Add(loadedSimpleGoal);
+            }else if (parts[0] == "EternalGoal")
+            {
+              
+                EternalGoal loadedEternalGoal = new  EternalGoal (parts[1],parts[2],parts[3]);       
+                _goals.Add(loadedEternalGoal);        
+
+            }else if (parts[0]== "ChecklistGoal")
+            {
+                
+                ChecklistGoal loadedChecklistGoal = new ChecklistGoal (parts[1],parts[2],parts[3],int.Parse(parts[5]),int.Parse(parts[6]));
+                loadedChecklistGoal.SetAmmountCompleted(int.Parse(parts[4]));
+                _goals.Add(loadedChecklistGoal);
+            }else{
+                _score = int.Parse(parts[0]);
+            }
         }
 
 
-        /*
-        string[] lines = System.IO.File.ReadAllLines(filename);
-
-    foreach (string line in lines)
-    {
-    string[] parts = line.Split(",");
-
-    string firstName = parts[0];
-    string lastName = parts[1];
-        }
-        */
     }
 }

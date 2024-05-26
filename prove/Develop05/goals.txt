@@ -1,3 +1,4 @@
-|aaaaa|aaaaaaaaaaaaaaaaaaaaaaa|100
-|bbb|bbbbbbbbbbbbbbbbbbbbb|200
-|ccc|ccccccccccccccccccccccccccccccccccccccc|250
+1140
+SimpleGoal|Give a blessing|Give a health blessing to my wife this afternoon|100|False
+EternalGoal|Clean my building|Clean my Church building whenever asked to do it|120|False
+ChecklistGoal|Pay my thithing|Pay a full thithing every month|400|3|4|300
