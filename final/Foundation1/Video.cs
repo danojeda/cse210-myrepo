@@ -24,5 +24,15 @@ public class Video
         return "Title: "+ _title+ ", by "+ _author + ", " + Convert.ToString(_length)+" mins. "+ "Total comments: "+Convert.ToString(GetNumberOfComments())     ;
     }
 
-    //public string 
+    public void ShowComments()
+    {
+        Console.WriteLine("Comments:");
+        Console.WriteLine(" ");
+        foreach(Comment comment in _videoComments)
+        {   
+            
+            comment.DisplayCommentDetail();
+
+        }
+    } 
 }

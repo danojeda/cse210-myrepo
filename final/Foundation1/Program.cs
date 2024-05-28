@@ -46,7 +46,8 @@ class Program
         foreach (Video thisVideo in allMyVideos)
         {
             Console.WriteLine(thisVideo.GetVideoDetails());
-            
+            thisVideo.ShowComments();
+
         }
 
 
