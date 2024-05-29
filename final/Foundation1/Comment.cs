@@ -16,9 +16,10 @@ public class Comment
         Console.WriteLine();
     }
 
-    public void SetComment(string personName, string content)
+    /*public void SetComment(string personName, string content)
     {
         _personName = personName;
         _content = content;
     }
+    */
 }
