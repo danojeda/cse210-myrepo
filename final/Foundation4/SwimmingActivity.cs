@@ -8,27 +8,28 @@ public class SwimmingActivity : Activity
     }
 
 
-    public override double GetDistance()
+    public override decimal GetDistance()
     {
-          // Distance (km) = swimming laps * 50 / 1000
-        double thisDistance =  _numberOfLaps * 50 / 1000;
+         
+        decimal thisDistance =  _numberOfLaps * 50m / 1000m;
         return thisDistance;
+        
     }
 
 
-    public override double GetSpeed()
+    public override decimal GetSpeed()
     {
-        //Speed (mph or kph) = (distance / minutes) * 60
-        double thisDistance = GetDistance();
-        double thisSpeed = (thisDistance / GetMinutes())*60;
+        
+        decimal thisDistance = GetDistance();
+        decimal thisSpeed = (thisDistance / GetMinutes())*60m;
         return thisSpeed;
     }
 
 
-    public override double GetPace()
+    public override decimal GetPace()
     {
         //Pace = 60 / speed
-        double thisPace = 60 /GetSpeed();    
+        decimal thisPace = 60m /GetSpeed();    
         return thisPace;
     }
 
@@ -36,7 +37,7 @@ public class SwimmingActivity : Activity
     public override string  GetSummary()
     {
         //03 Nov 2022 Running (30 min): Distance 4.8 km, Speed: 9.7 kph, Pace: 6.25 min per km
-        return GetDate() + " Swimming (" + GetMinutes() + " min): Distance " + GetDistance() +" km, Speed: "+GetSpeed() + " kph, Pace: " + GetPace() + " min per km"  ;
+        return GetDate() + " Swimming (" + GetMinutes() + " min): Distance " + GetDistance().ToString("F2") +" km, Speed: "+GetSpeed().ToString("F2") + " kph, Pace: " + GetPace().ToString("F2") + " min per km"  ;
     }
 }
 

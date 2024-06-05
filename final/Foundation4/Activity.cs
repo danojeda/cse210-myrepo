@@ -16,19 +16,19 @@ public class Activity
 
     //In addition, the base class should contain virtual methods for getting the distance, speed, pace.
 
-    public virtual double GetDistance()
+    public virtual decimal GetDistance()
     {
-        return 1.2;
+        return 1.2M;
     }
 
-    public virtual double GetSpeed()
+    public virtual decimal GetSpeed()
     {
-        return 1.2;
+        return 1.2M;
     }
 
-    public virtual double GetPace()
+    public virtual decimal GetPace()
     {
-        return 1.2;
+        return 1.2M;
     }
 
     public virtual string  GetSummary()

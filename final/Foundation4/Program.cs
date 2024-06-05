@@ -14,7 +14,7 @@ class Program
         //write a program that creates at least one activity of each type. 
 
        
-        RunningActivity myRunningActivity = new RunningActivity (4.8,myDate1,60);
+        RunningActivity myRunningActivity = new RunningActivity (4.8M,myDate1,60);
        
         CyclingActivity myCyclingActivity = new CyclingActivity (2,myDate2,30);
        
